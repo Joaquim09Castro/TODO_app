@@ -1,7 +1,8 @@
-# <p align="center">Resilia Sprint</p> #
+# <p align="center" style="font-size:60px;"> TODO App </p> #
 
-```javascript
+## Functionalities ##
 
-const placeholder = 'esse texto';
-
-```
+* Create new tasks as `not started`.
+* Change task status: `started`, `finished`.
+* Delete tasks.
+---
