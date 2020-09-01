@@ -17,7 +17,7 @@ const todoApp = `
     </nav>
     <div class="d-flex justify-content-center">
         <div class="w-50 p-4 border rounded shadow-sm">
-            <form class="flex-fill">
+            <form class="flex-fill" id="form">
                 <div class="form-group">
                     <label for="tituloTarefa"><b>Título:</b></label>
                     <input type="text" class="form-control" id="tituloTarefa" placeholder="Título da tarefa">
@@ -26,6 +26,9 @@ const todoApp = `
                     <label for="descricaoTarefa"><b>Descrição:</b></label>
                     <textarea class="form-control" id="descricaoTarefa" rows="3"
                         placeholder="Insira a descrição da tarefa"></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="submit" class="rounded">
                 </div>
             </form>
         </div>

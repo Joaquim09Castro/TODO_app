@@ -8,4 +8,4 @@ app.get('/', (req, resp) => {
   resp.send(todoApp);
 });
 
-app.listen(port, () => console.log("Server running"));
+app.listen(port, () => console.log(`Server running`));
