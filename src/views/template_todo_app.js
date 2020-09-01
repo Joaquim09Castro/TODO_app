@@ -1,5 +1,6 @@
+// html view
 const todoApp = `
-<!DOCTYPE html>
+<!DOCTYPE html5>
 <html lang="pt-br">
 
 <head>
@@ -49,4 +50,5 @@ const todoApp = `
 
 </html>`;
 
+// export view
 module.exports = todoApp;
