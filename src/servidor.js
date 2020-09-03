@@ -1,7 +1,7 @@
 // express import
 const express = require('express'),
   // routes import
-  rotasTarefas = require('./routes/routes-tasks');
+  rotasTarefas = require('./routes/routes');
 
 const app = express();
 const port = 3000;
