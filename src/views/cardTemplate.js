@@ -13,6 +13,6 @@ function generateCard(task) {
       </div>
     </div>
   `;
-}
+};
 
 module.exports = generateCard;
