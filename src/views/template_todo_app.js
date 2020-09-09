@@ -1,5 +1,11 @@
-// html view
-function todoAppPageLoad(card) { 
+const card = require('./cardTemplate');
+
+function todoAppPageLoad(tasks) {
+
+    let taskList = "";
+
+    tasks.forEach( item => taskList += card(item));
+
     return `
         <!DOCTYPE html5>
         <html lang="pt-br">
@@ -35,8 +41,8 @@ function todoAppPageLoad(card) {
                     </form>
                 </div>
             </div>
-            <div id="todoCard" class="d-flex justify-content-center mt-4">
-                ${card}
+            <div id="todoCard" class="d-flex justify-content-left mt-4 card-columns w-50 mr-auto ml-auto flex-wrap">
+                ${taskList}
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
                 integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">

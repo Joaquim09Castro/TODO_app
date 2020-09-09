@@ -1,28 +1,22 @@
 // app view import
-const todoAppPageLoad = require('../views/template_todo_app'),
-  card = require('../views/cardTemplate'),
-  db = require('../data/db.json').data;
-  
-  
+const todoAppPageLoad = require('../views/template_todo_app');
+const db = require('../config/database/database');  
+const TaskDao = require('../models/Tasks-DAO');
+const TasksDao = require('../models/Tasks-DAO');
 
 // PATH exports
 module.exports = (app) => {
   // Home page
-  app.get('/:id', (req, resp) => {
+  app.get('/', (req, resp) => {
 
-    const user = req.params.id;
-
-    for (let i = 0; i < db.length; i++) {
-      if (user == db[i].name) {
-        resp.send(
-          todoAppPageLoad(
-            db[i].tasks.map(tasks => card(tasks)).join('')
-          )
-        )
-        break;
-      }
-    }
-  });
+    const taskDao = new TasksDao(db);
+    
+    taskDao.list()
+      .then(tasks => {
+        resp.send(todoAppPageLoad(tasks));
+      })
+      .catch(err => console.log(err));
+  })
 
   // nodemon test page
   app.post('/nodemon', (req, resp) => {

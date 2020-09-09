@@ -1,14 +1,12 @@
 function generateCard(task) {
   return `
-    <div class="card w-25 m-2">
+    <div class="card w-50 mt-3 col-lg-4 col-12 p-0">
       <div class="card-body">
-        <div class="text-center border-bottom">
-          <h5 class="card-title">${task.title}</h5>
-          <p class="card-text">${task.desc}</p>
-        </div>
-        <br>
-        <div>
-          <input type="submit" value="Not Started" onclick="alert('${task.title}')">
+        <div class="text-center">
+          <h4 class="card-title border-bottom">${task.titulo}</h4>
+          <p class="card-text">${task.descricao}</p>
+          <br>
+          <p class="text-secondary">${task.status}</p>
         </div>
       </div>
     </div>
