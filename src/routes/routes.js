@@ -1,22 +1,12 @@
-// app view import
-const todoAppPageLoad = require('../views/template_todo_app');
-const db = require('../config/database/database');  
-const TaskDao = require('../models/Tasks-DAO');
-const TasksDao = require('../models/Tasks-DAO');
+// const todoAppPageLoad = require('../views/template_todo_app');
+// const db = require('../config/database/database');
+// const TasksDao = require('../models/Tasks-DAO');
+const taskController = require('../controllers/taskController');
 
 // PATH exports
 module.exports = (app) => {
   // Home page
-  app.get('/', (req, resp) => {
-
-    const taskDao = new TasksDao(db);
-    
-    taskDao.list()
-      .then(tasks => {
-        resp.send(todoAppPageLoad(tasks));
-      })
-      .catch(err => console.log(err));
-  })
+  app.get('/', taskController)
 
   // nodemon test page
   app.post('/nodemon', (req, resp) => {
