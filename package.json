@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon src/server.js",
-    "dbRun": "node src/database/tableCreation.js && node src/database/dataInsert.js && echo \"Database initialized\"" 
+    "start": "nodemon src/app/server.js" 
   },
   "author": "",
   "license": "ISC",

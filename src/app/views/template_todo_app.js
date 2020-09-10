@@ -4,7 +4,9 @@ function todoAppPageLoad(tasks) {
 
     let taskList = "";
 
-    tasks.forEach( item => taskList += card(item));
+    if (tasks) {
+        tasks.forEach( item => taskList += card(item));
+    }
 
     return `
         <!DOCTYPE html5>
@@ -41,7 +43,7 @@ function todoAppPageLoad(tasks) {
                     </form>
                 </div>
             </div>
-            <div id="todoCard" class="d-flex justify-content-left mt-4 card-columns w-50 mr-auto ml-auto flex-wrap">
+            <div id="todoCard" class="d-flex justify-content-center mt-4 card-columns w-50 mr-auto ml-auto flex-wrap">
                 ${taskList}
             </div>
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

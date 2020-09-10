@@ -1,6 +1,6 @@
 const todoAppPageLoad = require('../views/template_todo_app');
 const db = require('../../config/database/database');
-const TasksDao = require('../models/Tasks-DAO');
+const TasksDao = require('../DAO/Tasks-DAO');
 
 const taskController = (req, resp) => {
 
@@ -8,7 +8,11 @@ const taskController = (req, resp) => {
   
   taskDao.list()
     .then(tasks => {
-      resp.send(todoAppPageLoad(tasks));
+      if(tasks.length > 0) {
+        resp.send(todoAppPageLoad(tasks));
+      } else {
+        resp.send(todoAppPageLoad());
+      }
     })
     .catch(err => console.log(err));
 }
