@@ -1,20 +1,28 @@
 const todoAppPageLoad = require('../views/template_todo_app');
 const db = require('../../config/database/database');
-const TasksDao = require('../DAO/Tasks-DAO');
+const TasksDao = require('../../config/DAO/Tasks-DAO');
 
-const taskController = (req, resp) => {
+class TaskController {
+  constructor(db) {
 
-  const taskDao = new TasksDao(db);
-  
-  taskDao.list()
-    .then(tasks => {
-      if(tasks.length > 0) {
-        resp.send(todoAppPageLoad(tasks));
-      } else {
-        resp.send(todoAppPageLoad());
-      }
-    })
-    .catch(err => console.log(err));
+    this.taskDao = new TasksDao(db);
+  }
+
+  homeTasks() {
+    return (req, resp) => {
+    
+      this.taskDao.list()
+        .then(tasks => {
+          if(tasks.length > 0) {
+            resp.send(todoAppPageLoad(tasks));
+          } else {
+            resp.send(todoAppPageLoad());
+          }
+        })
+        .catch(err => console.log(err));
+    }
+  }
 }
 
-module.exports = taskController;
+
+module.exports = TaskController;

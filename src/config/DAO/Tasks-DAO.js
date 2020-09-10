@@ -6,7 +6,7 @@ class TasksDao {
   list() {
     return new Promise((resolve,reject) => {
       this._db.all(
-        'SELECT * FROM tarefas',
+        'SELECT * FROM tarefas WHERE titulo = ?', ['Resilia'],
         (err,res) => {
           if (err)
             return reject('Unable to list tasks');

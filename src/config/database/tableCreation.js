@@ -6,7 +6,7 @@ const TABLE_SCHEMA_TAREFAS = `
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     titulo VARCHAR(50),
     descricao TEXT,
-    status VARCHAR(50)
+    status VARCHAR(50) DEFAULT 'Not Started'
   )
 `;
 
