@@ -1,5 +1,7 @@
 # <p align="center" style="font-size:60px;"> TODO App </p> #
 
+### <p align="center" style="margin: 2em 0;">_App project to gain experience with node.js_</p> ###
+
 ## Functionalities ##
 
 > * Create new tasks as `not started`.
