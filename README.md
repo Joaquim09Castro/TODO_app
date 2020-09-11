@@ -1,6 +1,6 @@
 # <p align="center" style="font-size:60px;"> TODO App </p> #
 
-<p align="center" style="margin: 2em 0; font-size: 10px;">_App project to gain experience with node.js_</p>
+_<p align="center" style="margin: 2em 0; font-size: 10px;">App project to gain experience with node.js</p>_
 
 ## Functionalities ##
 
