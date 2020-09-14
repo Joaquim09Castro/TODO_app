@@ -9,8 +9,7 @@ module.exports = (app) => {
   // Home page
   app.get('/', taskController.homeTasks())
 
-  // nodemon test page
-  app.post('/nodemon', (req, resp) => {
-    resp.send('<h1>Rota testada utilizando nodemon</h1>')
-  })
+  // app.post('/', (req, resp) => {
+  //   resp.send()
+  // })
 };

@@ -47,7 +47,7 @@ function todoAppPageLoad(tasks) {
                         </form>
                     </div>
                 </div>
-                <div id="todoCard" class="d-flex justify-content-center mt-4 card-columns w-50 mr-auto ml-auto flex-wrap">
+                <div id="todoCard" class="d-flex justify-content-center mt-4 card-columns w-75 mr-auto ml-auto flex-wrap">
                     ${taskList}
                 </div>
             </main>
