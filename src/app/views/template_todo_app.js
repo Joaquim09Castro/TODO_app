@@ -19,6 +19,7 @@ function todoAppPageLoad(tasks) {
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+            <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
         </head>
 
         <body>
@@ -31,15 +32,15 @@ function todoAppPageLoad(tasks) {
             <main>
                 <div class="d-flex justify-content-center">
                     <div class="col-7 p-4 border rounded shadow-sm">
-                        <form class="flex-fill" id="form">
+                        <form class="flex-fill" id="form" action="/addTask" method="POST">
                             <div class="form-group">
                                 <label for="tituloTarefa"><b>Título:</b></label>
-                                <input type="text" class="form-control" id="tituloTarefa" placeholder="Título da tarefa">
+                                <input type="text" class="form-control" id="tituloTarefa" name="title" placeholder="Tarefa">
                             </div>
                             <div class="form-group">
                                 <label for="descricaoTarefa"><b>Descrição:</b></label>
-                                <textarea class="form-control" id="descricaoTarefa" rows="3"
-                                    placeholder="Insira a descrição da tarefa"></textarea>
+                                <textarea class="form-control" id="descricaoTarefa" name="desc" rows="3"
+                                    placeholder="Descreva a tarefa"></textarea>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="submit" class="rounded btn-success btn-block">
@@ -62,6 +63,7 @@ function todoAppPageLoad(tasks) {
                 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
                     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
                 </script>
+                <script src="/static/js/client.js"></script>
             </footer>
         </body>
         </html>

@@ -22,6 +22,29 @@ class TaskController {
         .catch(err => console.log(err));
     }
   }
+
+  createNewTask() {
+    return (req, resp) => {
+      this.taskDao.post(req.body)
+      .then( respMsg => {
+        console.log(respMsg)
+        resp.redirect('/');
+      })
+      .catch(err => console.log(err));
+      
+    }
+  }
+
+  deleteTask() {
+    return (req,resp) => {
+      this.taskDao.delete(req.params.id)
+        .then(respMsg => {
+          console.log(respMsg);
+          resp.send(respMsg);
+        })
+        .catch(err => console.log(err))
+    }
+  }
 }
 
 
