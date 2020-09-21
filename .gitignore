@@ -1,3 +1,4 @@
 .markdownlintignore
 node_modules
-.vscode/settings.json
+.vscode/
+.data
