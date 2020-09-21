@@ -1,4 +1,4 @@
 .markdownlintignore
 node_modules
 .vscode/
-.data
+data.db
