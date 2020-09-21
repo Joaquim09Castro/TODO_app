@@ -27,11 +27,22 @@ class TaskController {
     return (req, resp) => {
       this.taskDao.post(req.body)
       .then( respMsg => {
-        console.log(respMsg)
+        console.log(respMsg);
         resp.redirect('/');
       })
       .catch(err => console.log(err));
       
+    }
+  }
+
+  updateTask() {
+    return (req,resp) => {
+      this.taskDao.update(req)
+        .then( respMsg => {
+          console.log(respMsg);
+          resp.redirect('/');
+        })
+        .catch(err => console.log(err));
     }
   }
 

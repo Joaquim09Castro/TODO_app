@@ -9,8 +9,12 @@ const taskController = new TaskController(db)
 module.exports = (app) => {
   // Home page
   app.get('/', taskController.homeTasks());
+  
+  // New task
+  app.post('/addTask', taskController.createNewTask());
 
-  app.post('/addTask', taskController.createNewTask())
+  /* app.update('/updateTask/:id', taskController.updateTask()); */
 
+  // Delete Task
   app.delete('/deleteTask/:id', taskController.deleteTask());
 };
