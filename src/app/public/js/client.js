@@ -1,20 +1,28 @@
 const deleteTask = (event) => {
   const id = event.target.parentNode.parentNode.dataset.idTarefa;
-  const card = document.getElementById(`card_${id}`);
+  const task = document.getElementById(`task_${id}`);
 
-  fetch(`http://localhost:9000/deleteTask/${id}`,{method: "DELETE"})
+  fetch(`/deleteTask/${id}`,{method: "DELETE"})
     .then(resp => {
       if (resp.ok)
-        card.remove();
-        setTimeout(() => alert('Task Deleted!'), 120);
+        task.remove();
     })
     .catch(err => console.log(err));
 }
 
 const editTask = (event) => {
+  // Task elements
   const id = event.target.parentNode.parentNode.dataset.idTarefa;
-  const card = document.getElementById(`card_${id}`);
+  const title = document.getElementById(`title-task_${id}`).innerText;
+  const desc = document.getElementById(`desc-task_${id}`).innerText;
 
-  console.log(`${card.id} updated`);
-  //fetch()
+  // Form elements
+  const idInput = document.getElementById('taskId');
+  const titleInput = document.getElementById('taskTitle');
+  const descInput = document.getElementById('taskDesc');
+
+  // Insert Values into FORM
+  idInput.value = id;
+  titleInput.value = title;
+  descInput.value = desc;
 }

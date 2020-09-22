@@ -37,7 +37,7 @@ class TaskController {
 
   updateTask() {
     return (req,resp) => {
-      this.taskDao.update(req)
+      this.taskDao.update(req.body)
         .then( respMsg => {
           console.log(respMsg);
           resp.redirect('/');
@@ -51,6 +51,7 @@ class TaskController {
       this.taskDao.delete(req.params.id)
         .then(respMsg => {
           console.log(respMsg);
+          resp.body = respMsg;
           resp.send(respMsg);
         })
         .catch(err => console.log(err))

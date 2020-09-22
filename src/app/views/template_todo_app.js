@@ -32,15 +32,34 @@ function todoAppPageLoad(tasks) {
             <main>
                 <div class="d-flex justify-content-center">
                     <div class="col-7 p-4 border rounded shadow-sm">
+                        <h2 class="text-center border-bottom pb-2">ADD TASK</h2>
                         <form class="flex-fill" id="form" action="/addTask" method="POST">
+                            <input type="hidden" name="_method" value="PUT">
+                            <input type="hidden" id="taskId" name="taskId" value="null">
                             <div class="form-group">
-                                <label for="tituloTarefa"><b>Título:</b></label>
-                                <input type="text" class="form-control" id="tituloTarefa" name="title" placeholder="Tarefa">
+                                <label for="taskTitle"><b>Title:</b></label>
+                                <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Tarefa">
                             </div>
                             <div class="form-group">
-                                <label for="descricaoTarefa"><b>Descrição:</b></label>
-                                <textarea class="form-control" id="descricaoTarefa" name="desc" rows="3"
+                                <label for="taskDesc"><b>Description:</b></label>
+                                <textarea class="form-control" id="taskDesc" name="desc" rows="3"
                                     placeholder="Descreva a tarefa"></textarea>
+                            </div>
+                            <div class="d-flex form-group border rounded justify-content-center align-items-center" id="status-list">
+                                <input type="radio" id="Not_Started" data-statusId="1" name="status" checked>
+                                <label class="pr-3 pl-1 mb-0" for="Not_Started">Not Started</label>
+
+                                <input type="radio" id="Ongoing" data-statusId="2" name="status">
+                                <label class="pr-3 pl-1 mb-0" for="Ongoing">Ongoing</label>
+
+                                <input type="radio" id="Continuous" data-statusId="3" name="status">
+                                <label class="pr-3 pl-1 mb-0" for="Continuous">Continuous</label>
+
+                                <input type="radio" id="TODO" data-statusId="4" name="status">
+                                <label class="pr-3 pl-1 mb-0" for="TODO">TODO</label>
+
+                                <input type="radio" id="Finished" data-statusId="5" name="status">
+                                <label class="pr-3 pl-1 mb-0" for="Finished">Finished</label>
                             </div>
                             <div class="form-group">
                                 <input type="submit" value="submit" class="rounded btn-success btn-block">

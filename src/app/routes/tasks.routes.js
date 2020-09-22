@@ -13,7 +13,7 @@ module.exports = (app) => {
   // New task
   app.post('/addTask', taskController.createNewTask());
 
-  /* app.update('/updateTask/:id', taskController.updateTask()); */
+  app.put('/editTask', taskController.updateTask());
 
   // Delete Task
   app.delete('/deleteTask/:id', taskController.deleteTask());

@@ -1,10 +1,20 @@
 function generateCard(task) {
+  let noTitle = '', noDesc = '';
+  
+  if (task.titulo == 'Blank Title') {
+    noTitle = 'text-danger font-weight-bold';
+  }
+
+  if (task.descricao == 'Blank Description') {
+    noDesc = 'text-danger font-weight-bold';
+  }
+
   return `
-    <div id="card_${task.id}" class="card w-100 mt-2 col-lg-5 col-md-12 pr-4 pl-4">
+    <div id="task_${task.id}" class="card w-100 mt-2 col-lg-5 col-md-12 pr-4 pl-4">
       <div class="card-body">
         <div class="text-center" data-id-tarefa="${task.id}">
-          <h4 class="card-title border-bottom">${task.titulo}</h4>
-          <p class="card-text">${task.descricao}</p>
+          <h4 class="card-title border-bottom ${noTitle}" id="title-task_${task.id}">${task.titulo}</h4>
+          <p class="card-text ${noDesc}" id="desc-task_${task.id}">${task.descricao}</p>
           <br>
           <p class="text-secondary">${task.status_name}</p>
           <br>
