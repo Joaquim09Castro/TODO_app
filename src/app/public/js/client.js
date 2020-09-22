@@ -15,14 +15,22 @@ const editTask = (event) => {
   const id = event.target.parentNode.parentNode.dataset.idTarefa;
   const title = document.getElementById(`title-task_${id}`).innerText;
   const desc = document.getElementById(`desc-task_${id}`).innerText;
+  const status = document.getElementById(`status-task_${id}`).dataset.status;
 
   // Form elements
   const idInput = document.getElementById('taskId');
   const titleInput = document.getElementById('taskTitle');
   const descInput = document.getElementById('taskDesc');
+  const currStatusInput = document.getElementById('currStatus');
+  const statusListDiv = document.getElementById('status-list');
 
   // Insert Values into FORM
   idInput.value = id;
   titleInput.value = title;
   descInput.value = desc;
+  currStatusInput.value = status;
+  statusListDiv.innerHTML = statusListGen();
+
+  // Go to the top of the page
+  window.scrollTo(0,0);
 }

@@ -10,6 +10,7 @@ class TasksDao {
           tas.id,
           tas.titulo,
           tas.descricao,
+          tas.status,
           stt.status_name
         FROM
           tarefas as tas
@@ -55,17 +56,22 @@ class TasksDao {
   }
 
   update(newData) {
+    if (!newData.taskStatus) {
+      newData.taskStatus = newData.currStatus;
+    }
     return new Promise((resolve,reject) => {
       this._db.run(`
         UPDATE 
           tarefas
         SET
           titulo = ?,
-          descricao = ?
+          descricao = ?,
+          status = ?
         WHERE
           id = ?`,
         [ newData.title,
           newData.desc,
+          newData.taskStatus,
           newData.taskId],
           err => {
             if (err) {

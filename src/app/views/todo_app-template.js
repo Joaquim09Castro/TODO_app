@@ -36,6 +36,7 @@ function todoAppPageLoad(tasks) {
                         <form class="flex-fill" id="form" action="/addTask" method="POST">
                             <input type="hidden" name="_method" value="PUT">
                             <input type="hidden" id="taskId" name="taskId" value="null">
+                            <input type="hidden" id="currStatus" name="currStatus" value="null">
                             <div class="form-group">
                                 <label for="taskTitle"><b>Title:</b></label>
                                 <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Tarefa">
@@ -45,22 +46,10 @@ function todoAppPageLoad(tasks) {
                                 <textarea class="form-control" id="taskDesc" name="desc" rows="3"
                                     placeholder="Descreva a tarefa"></textarea>
                             </div>
-                            <div class="d-flex form-group border rounded justify-content-center align-items-center" id="status-list">
-                                <input type="radio" id="Not_Started" data-statusId="1" name="status" checked>
-                                <label class="pr-3 pl-1 mb-0" for="Not_Started">Not Started</label>
 
-                                <input type="radio" id="Ongoing" data-statusId="2" name="status">
-                                <label class="pr-3 pl-1 mb-0" for="Ongoing">Ongoing</label>
-
-                                <input type="radio" id="Continuous" data-statusId="3" name="status">
-                                <label class="pr-3 pl-1 mb-0" for="Continuous">Continuous</label>
-
-                                <input type="radio" id="TODO" data-statusId="4" name="status">
-                                <label class="pr-3 pl-1 mb-0" for="TODO">TODO</label>
-
-                                <input type="radio" id="Finished" data-statusId="5" name="status">
-                                <label class="pr-3 pl-1 mb-0" for="Finished">Finished</label>
+                            <div class="d-flex flex-wrap form-group justify-content-center align-items-center " id="status-list">
                             </div>
+
                             <div class="form-group">
                                 <input type="submit" value="submit" class="rounded btn-success btn-block">
                             </div>
@@ -83,6 +72,7 @@ function todoAppPageLoad(tasks) {
                     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
                 </script>
                 <script src="/static/js/client.js"></script>
+                <script src="/static/js/status_list-template.js"></script>
             </footer>
         </body>
         </html>
