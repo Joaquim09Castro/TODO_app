@@ -22,6 +22,7 @@ const editTask = (event) => {
   const titleInput = document.getElementById('taskTitle');
   const descInput = document.getElementById('taskDesc');
   const currStatusInput = document.getElementById('currStatus');
+  const statusLabel = document.getElementById('status-label');
   const statusListDiv = document.getElementById('status-list');
 
   // Insert Values into FORM
@@ -30,6 +31,9 @@ const editTask = (event) => {
   descInput.value = desc;
   currStatusInput.value = status;
   statusListDiv.innerHTML = statusListGen();
+
+  // Remove status list label hidden class
+  statusLabel.classList.remove('hidden');
 
   // Go to the top of the page
   window.scrollTo(0,0);

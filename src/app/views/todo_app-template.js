@@ -20,6 +20,7 @@ function todoAppPageLoad(tasks) {
                 integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
             <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
             <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
+            <link rel="stylesheet" href="/static/css/style.css" type="text/css">
         </head>
 
         <body>
@@ -39,14 +40,15 @@ function todoAppPageLoad(tasks) {
                             <input type="hidden" id="currStatus" name="currStatus" value="null">
                             <div class="form-group">
                                 <label for="taskTitle"><b>Title:</b></label>
-                                <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Tarefa">
+                                <input type="text" class="form-control" id="taskTitle" name="title" placeholder="Task">
                             </div>
                             <div class="form-group">
                                 <label for="taskDesc"><b>Description:</b></label>
                                 <textarea class="form-control" id="taskDesc" name="desc" rows="3"
-                                    placeholder="Descreva a tarefa"></textarea>
+                                    placeholder="Describe your task"></textarea>
                             </div>
 
+                            <label for="status-list" class="hidden" id="status-label"><b>Status:</b></label>
                             <div class="d-flex flex-wrap form-group justify-content-center align-items-center " id="status-list">
                             </div>
 
