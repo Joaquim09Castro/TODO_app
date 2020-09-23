@@ -1,12 +1,13 @@
+console.log(__dirname);
 // express import
 const express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  rotasTarefas = require('./routes/tasks.routes');
+  rotasTarefas = require('./app/routes/tasks.routes');
 
 const app = express();
 
-app.use('/static', express.static(__dirname + '/public'))
+app.use('/static', express.static(__dirname + '/app/public'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}));
@@ -27,5 +28,5 @@ app.use(methodOverride(function (req, resp) {
 rotasTarefas(app);
 
 // server process
-const port = process.env.PORT || 9000;
-app.listen(port, () => console.log(`Server running`));
+app.set( 'port', ( process.env.PORT || 9000 ));
+app.listen(app.get('port'), () => console.log(`Server running`));
