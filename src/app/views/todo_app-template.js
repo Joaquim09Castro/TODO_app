@@ -21,6 +21,7 @@ function todoAppPageLoad(tasks) {
             <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
             <link rel="shortcut icon" href="/static/img/favicon.ico" type="image/x-icon">
             <link rel="stylesheet" href="/static/css/style.css" type="text/css">
+            
         </head>
 
         <body>
