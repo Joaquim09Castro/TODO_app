@@ -3,7 +3,7 @@ console.log(__dirname);
 const express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  rotasTarefas = require('./app/routes/tasks.routes');
+  rotasTarefas = require('./routes/tasks.routes');
 
 const app = express();
 
