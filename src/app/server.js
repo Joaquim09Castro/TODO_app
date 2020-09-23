@@ -3,11 +3,11 @@ console.log(__dirname);
 const express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  rotasTarefas = require('./app/routes/tasks.routes');
+  rotasTarefas = require('./routes/tasks.routes');
 
 const app = express();
 
-app.use('/static', express.static(__dirname + '/app/public'))
+app.use('/static', express.static(__dirname + '/public'))
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true}));
