@@ -1,5 +1,5 @@
 const db = require('../../config/database/database');
-const TaskController = require('../controllers/TaskController.js');
+const TaskController = require('../controllers/TaskController');
 
 const taskController = new TaskController(db)
 // PATH exports
