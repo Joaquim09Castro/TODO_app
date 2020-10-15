@@ -1,20 +1,27 @@
 const todoAppPageLoad = require('../views/todo_app-template');
-const db = require('../../config/database/database');
-const TasksDao = require('../../config/DAO/Tasks-DAO');
+const TaskDao = require('../../config/DAO/Tasks-DAO');
 
 class TaskController {
-  constructor(db) {
-
-    this.taskDao = new TasksDao(db);
-  }
-
-  homeTasks() {
+  static homeTasks() {
     return (req, resp) => {
-    
-      this.taskDao.list()
+      const QUERY = `
+        SELECT
+          tas.id,
+          tas.titulo,
+          tas.descricao,
+          tas.status,
+          stt.status_name
+        FROM
+          tarefas as tas
+        INNER JOIN
+          status as stt
+        ON
+          stt.id = tas.status;`;
+
+      TaskDao.list(QUERY)
         .then(tasks => {
-          if(tasks.length > 0) {
-            resp.send(todoAppPageLoad(tasks));
+          if(tasks.rows.length > 0) {
+            resp.send(todoAppPageLoad(tasks.rows));
           } else {
             resp.send(todoAppPageLoad());
           }
@@ -23,9 +30,22 @@ class TaskController {
     }
   }
 
-  createNewTask() {
+  static createNewTask() {
     return (req, resp) => {
-      this.taskDao.post(req.body)
+      const {
+        title,
+        desc
+      } = req.body;
+      const QUERY = {
+        text: `
+          INSERT INTO
+            tarefas (titulo,descricao)
+          VALUES
+            ( $1 , $2 );`,
+        values: [ title , desc ]
+      };
+
+      TaskDao.post(QUERY)
       .then( respMsg => {
         console.log(respMsg);
         resp.redirect('/');
@@ -35,9 +55,28 @@ class TaskController {
     }
   }
 
-  updateTask() {
+  static updateTask() {
     return (req,resp) => {
-      this.taskDao.update(req.body)
+      const {
+        title,
+        desc,
+        taskStatus,
+        currStatus,
+        taskId
+      } = req.body;
+      const QUERY = {
+        text: `
+        UPDATE 
+          tarefas
+        SET
+          titulo = $1,
+          descricao = $2,
+          status = $3
+        WHERE
+          id = $4`,
+        values: [ title , desc , taskStatus , taskId ]
+      };
+      TaskDao.update(QUERY, currStatus)
         .then( respMsg => {
           console.log(respMsg);
           resp.redirect('/');
@@ -46,12 +85,19 @@ class TaskController {
     }
   }
 
-  deleteTask() {
+  static deleteTask() {
     return (req,resp) => {
-      this.taskDao.delete(req.params.id)
+      const { id } = req.params;
+      const QUERY = {
+        text: `
+        DELETE FROM
+          tarefas
+        WHERE
+          id = $1`,
+        values: [ id ]
+      };
+      TaskDao.delete(QUERY)
         .then(respMsg => {
-          console.log(respMsg);
-          resp.body = respMsg;
           resp.send(respMsg);
         })
         .catch(err => console.log(err))

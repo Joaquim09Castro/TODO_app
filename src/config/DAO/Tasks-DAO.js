@@ -1,104 +1,30 @@
+const db = require('../database/database');
+
 class TasksDao {
-  constructor(db) {
-    this._db = db;
+
+  static list(query) {
+    return db.query(query);
   }
 
-  list() {
-    return new Promise((resolve,reject) => {
-      this._db.all(`
-        SELECT
-          tas.id,
-          tas.titulo,
-          tas.descricao,
-          tas.status,
-          stt.status_name
-        FROM
-          tarefas as tas
-        INNER JOIN
-          status as stt
-        ON
-          stt.id = tas.status`,
-        (err,res) => {
-          if (err){
-            return reject('Unable to list tasks');
-          }
-
-          return resolve(res);
-        }
-      )
-    });
-  }
-
-  post(newTask) {
-    if (newTask.title == '') {
-      newTask.title = 'Blank Title';
+  static post(query) {
+    if (query.values[0] == '') {
+      query.values[0] = 'Blank Title';
     }
-    if (newTask.desc == '') {
-      newTask.desc = 'Blank Description';
+    if (query.values[1] == '') {
+      query.values[1] = 'Blank Description';
     }
-    return new Promise((resolve,reject) => {
-      this._db.run(`
-        INSERT INTO
-          tarefas (titulo,descricao)
-        VALUES
-          (?,?)`,
-        [ newTask.title,
-          newTask.desc],
-        err => {
-          if (err) {
-            return reject('Unable to add task');
-          }
-          
-          return resolve('Task added');
-        }
-      )
-    })
+    return db.query(query);
   }
 
-  update(newData) {
-    if (!newData.taskStatus) {
-      newData.taskStatus = newData.currStatus;
+  static update(query, status) {
+    if (!query.values[2]) {
+      query.values[2] = status;
     }
-    return new Promise((resolve,reject) => {
-      this._db.run(`
-        UPDATE 
-          tarefas
-        SET
-          titulo = ?,
-          descricao = ?,
-          status = ?
-        WHERE
-          id = ?`,
-        [ newData.title,
-          newData.desc,
-          newData.taskStatus,
-          newData.taskId],
-          err => {
-            if (err) {
-              return reject(err)
-            }
-
-            return resolve('Task Updated');
-          }
-      )
-    })
+    return db.query(query);
   }
 
-  delete(taskId) {
-    return new Promise((resolve,reject) => {
-      this._db.run(`
-        DELETE FROM tarefas
-          WHERE id = ?`,
-        [taskId],
-        err => {
-          if (err) {
-            return reject('Unable to delete task');
-          }
-
-          return resolve('Task Deleted');
-        }
-      )
-    })
+  static delete(query) {
+    return db.query(query);
   }
 }
 

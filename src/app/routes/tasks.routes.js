@@ -1,17 +1,14 @@
-const db = require('../../config/database/database');
 const TaskController = require('../controllers/TaskController');
-
-const taskController = new TaskController(db)
 // PATH exports
 module.exports = (app) => {
   // Home page
-  app.get('/', taskController.homeTasks());
+  app.get('/', TaskController.homeTasks());
   
   // New task
-  app.post('/addTask', taskController.createNewTask());
+  app.post('/addTask', TaskController.createNewTask());
 
-  app.put('/editTask', taskController.updateTask());
+  app.put('/editTask', TaskController.updateTask());
 
   // Delete Task
-  app.delete('/deleteTask/:id', taskController.deleteTask());
+  app.delete('/deleteTask/:id', TaskController.deleteTask());
 };

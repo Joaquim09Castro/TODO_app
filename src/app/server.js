@@ -3,7 +3,8 @@ console.log(__dirname);
 const express = require('express'),
   bodyParser = require('body-parser'),
   methodOverride = require('method-override'),
-  rotasTarefas = require('./routes/tasks.routes');
+  rotasTarefas = require('./routes/tasks.routes'),
+  db = require('../config/database/database');
 
 const app = express();
 
@@ -29,4 +30,9 @@ rotasTarefas(app);
 
 // server process
 const port = process.env.PORT || 9000;
+
+db.connect()
+  .then(() => console.log('Database connected!'))
+  .catch(err => console.error(err));
+
 app.listen(port, () => console.log(`Server running on port ${port}`));
