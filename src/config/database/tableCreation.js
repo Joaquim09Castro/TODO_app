@@ -4,7 +4,7 @@ const db = new sqlite3.Database('./src/config/database/data.db');
 // Tables
 const TABLE_SCHEMA_TAREFAS = `
   CREATE TABLE IF NOT EXISTS tarefas (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    id SERIAL,
     titulo VARCHAR(50),
     descricao TEXT,
     status INTEGER DEFAULT 1,
@@ -19,7 +19,7 @@ const TABLE_SCHEMA_STATUS = `
     )
 `;
 
-// Table initial data
+// Table test data
 const ADD_TASKS = `
   INSERT INTO tarefas 
     (titulo, descricao, status)

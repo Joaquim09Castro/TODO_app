@@ -1,5 +1,7 @@
 const { Pool } = require('pg');
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+
+const databaseURL = process.env.DATABASE_URL;
+const pool = new Pool({ connectionString: databaseURL });
 
 process.on('SIGINT', () => {
   console.log('\nDatabase connection terminated');

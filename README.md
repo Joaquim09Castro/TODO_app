@@ -75,14 +75,15 @@ TODO app made as part of the Resilia Web Development course, to train express us
 
 ### Built With
 * [Express](https://expressjs.com/)
-* [Sqlite3](https://www.sqlite.org/index.html)
+* [node-postgres](https://node-postgres.com/)
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+- You can have the usage experience of this application through it's heroku instance [here](https://todo-joka.herokuapp.com).
+
+- For running this on your local machine, follow these steps.
 
 ### Prerequisites
 
@@ -91,6 +92,14 @@ To get a local copy up and running follow these simple example steps.
 > Node is a runtime built to develop the application's back end in JavaScript language.
 >
 > You can search for your preferable form of download [here](https://nodejs.org/en/download/).
+
+* A Postgres database
+
+> You can use a database located on your own machine.
+>
+> or
+>
+> Use a database from a hosting service provider (the heroku instance of this app uses [ElephantSQL](https://www.elephantsql.com/))
 
 ### Installation
 
@@ -107,18 +116,37 @@ npm install
 ---
 ## Usage
 
-1. On the command line, enter the command:
+1. Set the `database.js` file to use your database:
+
+```js
+// Option 1. Set the value directilly to the connection string value
+const databaseURL = "YOUR_DATABASE_CONNECTION_STRING";
+
+// Option 2. Install the dotenv node package and set the DATABASE_URL variable value inside it
+DATABASE_URL="YOUR_DATABASE_URL"
+```
+
+2. On your computer's terminal, run the code
+```sh
+node src/config/database/tableCreation.js
+```
+
+3. Run the code
 ```sh
 npm start
 ```
+to initialize the application on your machine.
 
-2. Go to the URL:
+4. Use the Port number the application gives you and go to
 ```http
-https://localhost:(port)
+http://localhost:(PORT_NUMBER)
 ```
-_Exchange_ (port) _with the port the server is running_
 
-_Default port is 9000_
+> You may set a PORT value in your .env file
+> 
+> By default the app will use it's value.
+>
+> If there is no value for PORT in it, the app will use Port 9000
 
 ---
 ## Roadmap
@@ -144,7 +172,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 ---
 ## Contact
 
-Joaquim Rodrigo Moraes de Castr - [Facebook](https://www.facebook.com/JokasRodrigo) - joaquimcastro2909@gmail.com
+Joaquim Rodrigo Moraes de Castro - joaquimcastro2909@gmail.com
 
 Project Link: [https://github.com/Joaquim09Castro/TODO_app](https://github.com/Joaquim09Castro/TODO_app)
 
