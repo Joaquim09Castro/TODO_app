@@ -3,10 +3,11 @@ const TaskController = require('../controllers/TaskController');
 module.exports = (app) => {
   // Home page
   app.get('/', TaskController.homeTasks());
-  
+
   // New task
   app.post('/addTask', TaskController.createNewTask());
 
+  // Edit task
   app.put('/editTask', TaskController.updateTask());
 
   // Delete Task
